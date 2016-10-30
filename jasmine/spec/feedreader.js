@@ -66,11 +66,11 @@ $(function() {
 
 
          /* This test ensures the menu changes
-          * visibility when the menu icon is clicked. This test
+          * visibility when th`e menu icon is clicked. This test
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
-          it('appeas when clicked while hidden and disappears when clicked while showing', function() {
+          it('appea`s when clicked while hidden and disappears when clicked while showing', function() {
             $('.menu-icon-link').trigger('click');
             expect($('body').hasClass('menu-hidden')).toBe(false);
 
@@ -100,9 +100,8 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
-         it('should be able to call loadFeed and esure at least one entry exists', function(done){
+         it('should be able to call loadFeed and esure at least one entry exists', function(){
            expect(matchedEntries).toBeGreaterThan(0);
-           done();
          });
 
     });
@@ -117,26 +116,26 @@ $(function() {
              /* Any necessary processing that should be done after the asyc
               * function completes should be listed here
               */
-             matchedEntriesInitialFeed = $('.entry').length;
+             matchedEntriesInitialFeed = $('div article').html();
+
+             loadFeed(1, function() {
+               /* Any necessary processing that should be done after the asyc
+                * function completes should be listed here
+                */
+               matchedEntriesNewFeed = $('div article').html();
+               done(); // We run this to indicate we are done and we can move forward
+             });
              done(); // We run this to indicate we are done and we can move forward
            });
 
-           loadFeed(1, function() {
-             /* Any necessary processing that should be done after the asyc
-              * function completes should be listed here
-              */
-             matchedEntriesNewFeed = $('.entry').length;
-             done(); // We run this to indicate we are done and we can move forward
-           });
          });
 
          /* This test ensures when a new feed is loaded
           * by the loadFeed function that the content actually changes.
           * Remember, loadFeed() is asynchronous.
           */
-          it('should display a new feed', function(done){
+          it('should display a new feed', function(){
             expect(matchedEntriesInitialFeed).not.toEqual(matchedEntriesNewFeed);
-            done();
           });
 
     });
