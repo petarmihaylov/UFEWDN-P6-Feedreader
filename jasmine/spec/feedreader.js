@@ -22,37 +22,52 @@ $(function() {
          * page?
          */
         it('are defined', function() {
-            expect(allFeeds).toBeDefined();
-            expect(allFeeds.length).not.toBe(0);
+          expect(allFeeds).toBeDefined();
+          expect(allFeeds.length).not.toBe(0);
         });
 
 
-        /* TODO: Write a test that loops through each feed
+        /* This test loops through each feed
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
+        it('have a url and that it is not empty', function() {
+          for (feed in allFeeds) {
+            expect(allFeeds[feed].url).toBeDefined();
+            expect(allFeeds[feed].url).not.toBe('');
+          }
+        });
 
-
-        /* TODO: Write a test that loops through each feed
+        /* This test loops through each feed
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
+         it('have a name and that it is not empty', function() {
+           for (feed in allFeeds) {
+             expect(allFeeds[feed].name).toBeDefined();
+             expect(allFeeds[feed].name).not.toBe('');
+           }
+         });
     });
 
+    /* New test suite named "The menu" */
+    describe('The Menu', function() {
 
-    /* TODO: Write a new test suite named "The menu" */
-
-        /* TODO: Write a test that ensures the menu element is
-         * hidden by default. You'll have to analyze the HTML and
-         * the CSS to determine how we're performing the
-         * hiding/showing of the menu element.
+        /* This test ensures the menu element is
+         * hidden by default.
          */
+         it('is hidden by default', function() {
+           expect($('body').hasClass('menu-hidden')).toBe(true);
+         });
+
 
          /* TODO: Write a test that ensures the menu changes
           * visibility when the menu icon is clicked. This test
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
+
+    });
 
     /* TODO: Write a new test suite named "Initial Entries" */
 
