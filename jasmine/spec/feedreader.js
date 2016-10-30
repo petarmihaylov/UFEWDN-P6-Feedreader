@@ -89,7 +89,7 @@ $(function() {
             /* Any necessary processing that should be done after the asyc
              * function completes should be listed here
              */
-            matchedEntries = $('.entry').length;
+            matchedEntries = $('.feed .entry').length;
             done(); // We run this to indicate we are done and we can move forward
           });
         });
@@ -116,16 +116,17 @@ $(function() {
              /* Any necessary processing that should be done after the asyc
               * function completes should be listed here
               */
-             matchedEntriesInitialFeed = $('div article').html();
+             matchedEntriesInitialFeed = $('.feed .entry').html();
 
              loadFeed(1, function() {
                /* Any necessary processing that should be done after the asyc
                 * function completes should be listed here
                 */
-               matchedEntriesNewFeed = $('div article').html();
+               matchedEntriesNewFeed = $('.feed .entry').html();
                done(); // We run this to indicate we are done and we can move forward
+                       // which will effective make jasmine wait for the second async
+                       // call to complete before proceeding with the next it block
              });
-             done(); // We run this to indicate we are done and we can move forward
            });
 
          });
